@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { UiFormComponent } from './ui-form/ui-form.component';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { UiFormComponent } from './ui-form/ui-form.component';
 
 const appRoutes: Routes = [ { path: '', redirectTo: 'ui-form', pathMatch: 'full' }, { path: 'ui-form', component: UiFormComponent } ];
 

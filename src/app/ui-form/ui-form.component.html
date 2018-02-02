@@ -3,7 +3,7 @@
       <div class="card-header card-inverse card-primary">Draggable Items with Handle</div>
       <div class="card-block scroll-list">
           <ul class="list-group text-center">
-              <li draggable *ngFor="let item of fruits" [dragClass]="'drag-over'" [dragData]="item" class="list-group-item justify-content-between list-group-item-action"
+              <li draggable *ngFor="let item of controls" [dragClass]="'drag-over'" [dragData]="item" class="list-group-item justify-content-between list-group-item-action"
                   [dragScope]="item.type" [dragHandle]="'.drag-bar'">
                   {{item.name}}
                   <i #dragHandle class="drag-bar fa fa-bars fa-lg" aria-hidden="true"></i>
@@ -13,14 +13,31 @@
   </div>
 
   <div class="col-sm-6">
-    <div class="card card-outline-primary mb-3" droppable [dragOverClass]="'drag-target-border'" [dropScope]="'fruit'" [dragHintClass]="'drag-hint'"
-        (onDrop)="onFruitDrop($event)" [dropEnabled]="fruitDropEnabled">
+    <div class="card card-outline-primary mb-3 card-root" droppable [dragOverClass]="'drag-target-border'" [dropScope]="'section'" [dragHintClass]="'drag-hint'"
+        (onDrop)="onControlDrop($event)" [dropEnabled]="true" >
         <div class="card-header card-inverse card-primary">
-            Drop Fruits here
+            Drop Controls here
         </div>
         <div class="card-block">
-            <div class="row"  >
-              <div *ngFor="let item of droppedFruits" class="col-sm-6">{{item.name}}</div>
+            <div class="row">
+              <div *ngFor="let item of droppedControls" [class]="item.className" 
+                droppable   [dropScope]="'htmlcontrol'" [dragOverClass]="'drag-target-border'"  [dragHintClass]="'drag-hint'"
+                  [dropEnabled]="true" (onDrop)="onChildDrop($event,item)" >
+                   
+                           <h4 class="droppable-header" (click)="properties=item"> {{item.dspname || item.name}} </h4>
+                           <div class="card-block">
+                                <div class="row">
+                                    <div  *ngFor="let obj of item.controls" [class]="obj.className" (click)="properties=obj" >
+                                        <div class="droppable">
+                                                {{obj.name}} <br/> {{obj.applicationObject}} {{obj.dspname}}
+                                        </div>
+                                           
+                                    </div>
+                             </div>
+                            </div>  
+                   
+               
+                </div>
           </div>
         </div>
     </div>
@@ -31,7 +48,24 @@
           Properties
       </div>
       <div class="card-block">
-          <div class="row">
+        <div class="row" *ngIf="properties">
+            <div class="form-group">
+                <label>DSP Label</label>
+                <input type="text" [(ngModel)]="properties.dspname" name="dspname{{properties.id}}" class="form-control" placeholder="Enter DSP Name">
+            </div>
+            <div class="form-group">
+                <label>Application Object</label>
+                <input type="text" [(ngModel)]="properties.applicationObject" name="applicationObject{{properties.id}}" class="form-control" placeholder="Enter Application Object">
+            </div>
+            <div class="form-group">
+                <label>DataType </label>
+                <input type="text" [(ngModel)]="properties.dataType" name="properties.dataType" class="form-control" placeholder="Enter DataType">
+            </div>
+            <div class="form-group">
+                    <label>Class </label>
+                    <input type="text" [(ngModel)]="properties.className" name="properties.className" class="form-control" placeholder="Enter DataType">
+                </div>
+           
         </div>
       </div>
   </div>
