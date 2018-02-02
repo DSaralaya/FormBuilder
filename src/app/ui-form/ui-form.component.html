@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="card card-outline-primary mb-3">
+      <div class="card-header card-inverse card-primary">Draggable Items with Handle</div>
+      <div class="card-block scroll-list">
+          <ul class="list-group text-center">
+              <li draggable *ngFor="let item of fruits" [dragClass]="'drag-over'" [dragData]="item" class="list-group-item justify-content-between list-group-item-action"
+                  [dragScope]="item.type" [dragHandle]="'.drag-bar'">
+                  {{item.name}}
+                  <i #dragHandle class="drag-bar fa fa-bars fa-lg" aria-hidden="true"></i>
+              </li>
+          </ul>
+      </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card card-outline-primary mb-3" droppable [dragOverClass]="'drag-target-border'" [dropScope]="'fruit'" [dragHintClass]="'drag-hint'"
+        (onDrop)="onFruitDrop($event)" [dropEnabled]="fruitDropEnabled">
+        <div class="card-header card-inverse card-primary">
+            Drop Fruits here
+        </div>
+        <div class="card-block">
+            <div class="row"  >
+              <div *ngFor="let item of droppedFruits" class="col-sm-6">{{item.name}}</div>
+          </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-3">
+  <div class="card card-outline-primary mb-3">
+      <div class="card-header card-inverse card-primary">
+          Properties
+      </div>
+      <div class="card-block">
+          <div class="row">
+        </div>
+      </div>
+  </div>
+</div>
+</div>
