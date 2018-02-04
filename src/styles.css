@@ -1,19 +1,51 @@
-.droppable{
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    line-height: 30px;
-    margin: 0px 5px 15px 0px;
-    text-align: center;
+.droppable {
+	border: 1px solid rgba(0, 0, 0, .125);
+	border-radius: .25rem;
+	line-height: 30px;
+	margin: 0px 5px 15px 0px;
+	width: 100%;
+	font-size: 12px;
+	overflow: scroll;
 }
-.droppable-header{
-    border-bottom: 1px solid rgba(0,0,0,.125);
+.droppable-header {
+	border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
-.inline-header{
-    min-height:100px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+.inline-header {
+	min-height: 100px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
 }
-.card-root{
-    min-height: 400px;
-    height: auto;
+.card-root {
+	min-height: 400px;
+	height: auto;
+}
+.nav {
+	margin-bottom: 20px;
+	margin-top: 10px;
+	border-bottom: 1px solid #cccccc87;
+	padding-bottom: 5px;
+}
+.nav li {
+	width: 50%;
+	text-align: center;
+	cursor: pointer;
+}
+.closeX {
+	cursor: pointer;
+	float: right;
+	position: absolute;
+	right: 24px;
+}
+.hidden {
+	display: none;
+}
+.paste {
+	min-height: 500px;
+}
+.codeView {
+	height: 800px;
+	overflow-y: scroll;
+}
+.activeElement {
+	border: 1px dashed #ff4913;
 }

@@ -1,14 +1,19 @@
 export interface ControlProperties {
 	id?: number;
 	label?: string;
-	dspname?: string;
+	sectionName?: string;
 	hideExpression?: string;
 	expressionProperties?: string;
 	className?: string;
-	type: string;
+	wrappers?: string;
 	name: string;
 	order?: string;
-	controls?: {
+	display?: boolean;
+	template?: string;
+	controls?: ChildControls[];
+}
+
+export interface ChildControls {
 	id?: number;
 	label?: string;
 	dspname?: string;
@@ -23,7 +28,10 @@ export interface ControlProperties {
 	optionType?: string;
 	order?: string;
 	sectionType?: string;
-	}[];
+	required?: boolean;
+	display?: boolean;
+	data?: string;
+	objectName?: string;
+	fieldName?: string;
+	defaultValue?: string;
 }
-
-
